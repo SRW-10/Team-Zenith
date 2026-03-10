@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ResQlink Patient Portal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Roboto',sans-serif;
+}
+
+body{
+background:#f4f8ff;
+}
+
+/* Header */
+
+.header{
+background:#1E3A8A;
+color:white;
+padding:18px;
+text-align:center;
+font-size:24px;
+font-weight:700;
+}
+
+/* Search Section */
+
+.search-container{
+display:flex;
+justify-content:center;
+margin-top:40px;
+}
+
+.search-box{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 6px 15px rgba(0,0,0,0.1);
+width:420px;
+text-align:center;
+}
+
+.search-box h3{
+margin-bottom:15px;
+color:#1E3A8A;
+}
+
+.search-box select{
+width:100%;
+padding:12px;
+border-radius:6px;
+border:1px solid #ccc;
+font-size:15px;
+margin-bottom:10px;
+}
+
+.search-box button{
+width:100%;
+padding:12px;
+background:#2563EB;
+color:white;
+border:none;
+border-radius:6px;
+font-weight:600;
+cursor:pointer;
+}
+
+/* Hospital Info Card */
+
+.result{
+margin-top:40px;
+display:flex;
+justify-content:center;
+}
+
+.card{
+display:none;
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 6px 15px rgba(0,0,0,0.1);
+width:420px;
+}
+
+.card h2{
+color:#1E3A8A;
+margin-bottom:10px;
+}
+
+.card p{
+margin-bottom:8px;
+font-size:15px;
+}
+
+.card a{
+color:#2563EB;
+text-decoration:none;
+font-weight:500;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+Patient Portal
+</div>
+
+<div class="search-container">
+
+<div class="search-box">
+
+<h3>Find Nearby Hospital</h3>
+
+<select id="hospitalSelect">
+
+<option value="">Select Hospital</option>
+<option value="city">City Care Hospital</option>
+<option value="apollo">Apollo Medical Center</option>
+<option value="sunrise">Sunrise Hospital</option>
+<option value="life">LifeLine Hospital</option>
+<option value="hope">Hope Multispeciality</option>
+
+</select>
+
+<button onclick="showHospital()">Search</button>
+
+</div>
+
+</div>
+
+
+<div class="result">
+
+<div class="card" id="hospitalCard">
+
+<h2 id="hospitalName"></h2>
+
+<p><b>Location:</b> <span id="hospitalLocation"></span></p>
+
+<p><b>Phone:</b> <span id="hospitalPhone"></span></p>
+
+<p>
+<b>Map:</b>
+<a id="hospitalMap" target="_blank">Open in Google Maps</a>
+</p>
+
+</div>
+
+</div>
+
+
+<script>
+
+const hospitals={
+
+city:{
+name:"City Care Hospital",
+location:"Nagpur Central, Maharashtra",
+phone:"+91 9876543210",
+map:"https://www.google.com/maps/search/?api=1&query=City+Care+Hospital+Nagpur"
+},
+
+apollo:{
+name:"Apollo Medical Center",
+location:"Dharampeth, Nagpur",
+phone:"+91 9823456721",
+map:"https://www.google.com/maps/search/?api=1&query=Apollo+Hospital+Nagpur"
+},
+
+sunrise:{
+name:"Sunrise Hospital",
+location:"Sitabuldi, Nagpur",
+phone:"+91 9765432180",
+map:"https://www.google.com/maps/search/?api=1&query=Sunrise+Hospital+Nagpur"
+},
+
+life:{
+name:"LifeLine Hospital",
+location:"Wardha Road, Nagpur",
+phone:"+91 9912345678",
+map:"https://www.google.com/maps/search/?api=1&query=Lifeline+Hospital+Nagpur"
+},
+
+hope:{
+name:"Hope Multispeciality Hospital",
+location:"Manish Nagar, Nagpur",
+phone:"+91 9898989898",
+map:"https://www.google.com/maps/search/?api=1&query=Hope+Hospital+Nagpur"
+}
+
+};
+
+function showHospital(){
+
+const selected=document.getElementById("hospitalSelect").value;
+
+if(selected===""){
+alert("Please select a hospital");
+return;
+}
+
+const hospital=hospitals[selected];
+
+document.getElementById("hospitalName").innerText=hospital.name;
+document.getElementById("hospitalLocation").innerText=hospital.location;
+document.getElementById("hospitalPhone").innerText=hospital.phone;
+document.getElementById("hospitalMap").href=hospital.map;
+
+document.getElementById("hospitalCard").style.display="block";
+
+}
+
+</script>
+
+</body>
+</html>

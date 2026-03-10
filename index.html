@@ -1,76 +1,115 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResQLink Login</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 
-<title>ResQLink Login</title>
-
-<link rel="stylesheet" href="style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
 <div class="login-container">
 
-<div class="login-box">
+    <div class="login-box">
 
-<h2>ResQLink</h2>
+        <h2 class="logo">ResQLink</h2>
+        <p class="subtitle">Emergency Assistant Portal</p>
 
-<p class="subtitle">Emergency Assistant Portal</p>
+        <div class="error" id="error"></div>
 
-<div class="error" id="error">Please fill all fields</div>
+        <form onsubmit="login(event)">
 
-<div class="input-group">
-<label>Username</label>
-<input type="text" id="username" placeholder="Enter username">
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+
+            <div class="input-group">
+                <label>Select Role</label>
+                <select id="role" required>
+                    <option value="">Select Role</option>
+                    <option value="patient">Patient</option>
+                    <option value="staff">Hospital Staff</option>
+                </select>
+            </div>
+
+            <button type="submit">Login</button>
+
+        </form>
+
+        <p class="footer">
+            Forgot password?
+            <a href="#">Contact Admin</a>
+        </p>
+
+    </div>
+
 </div>
 
-<div class="input-group">
-<label>Password</label>
-<input type="password" id="password" placeholder="Enter password">
-</div>
 
-<div class="input-group">
-<label>Select Role</label>
-<select id="role">
-<option value="">Select Role</option>
-<option value="patient">Patient</option>
-<option value="staff">Staff</option>
-</select>
-</div>
+<script type="module">
 
-<button onclick="login()">Login</button>
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-<p class="footer">
-Forgot password? <a href="#">Contact Admin</a>
-</p>
 
-</div>
+const firebaseConfig = {
+    apiKey: "AIzaSyCaDVQx_MkV3KoEPIrxhk7ckrbn7oYqscM",
+    authDomain: "resqlink-hospital.firebaseapp.com",
+    projectId: "resqlink-hospital",
+    storageBucket: "resqlink-hospital.firebasestorage.app",
+    messagingSenderId: "288981184483",
+    appId: "1:288981184483:web:cf14cb6d52685cf07bad6"
+};
 
-</div>
 
-<script>
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-function login(){
 
-let username=document.getElementById("username").value;
-let password=document.getElementById("password").value;
-let role=document.getElementById("role").value;
+window.login = function(event){
 
-let error=document.getElementById("error");
+    event.preventDefault();
 
-if(username=="" || password=="" || role==""){
-error.style.display="block";
-}
-else{
-error.style.display="none";
-alert("Login Successful\nRole: "+role);
-}
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const role = document.getElementById("role").value;
+    const error = document.getElementById("error");
+
+    if(email === "" || password === "" || role === ""){
+        error.innerText = "Please fill all fields";
+        error.style.display = "block";
+        return;
+    }
+
+    signInWithEmailAndPassword(auth, email, password)
+
+    .then(() => {
+
+        error.style.display = "none";
+
+        /* redirect to dashboard */
+        window.location.href = "dashboard.html";
+
+    })
+
+    .catch(() => {
+
+        error.innerText = "Invalid email or password";
+        error.style.display = "block";
+
+    });
 
 }
 
@@ -78,3 +117,4 @@ alert("Login Successful\nRole: "+role);
 
 </body>
 </html>
+```

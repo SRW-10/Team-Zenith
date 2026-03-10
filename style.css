@@ -1,102 +1,449 @@
+/* ============================= */
+/* GLOBAL STYLES */
+/* ============================= */
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:'Roboto',sans-serif;
 }
 
 body{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:linear-gradient(135deg,#e0ecff,#f4f9ff);
+background:#f8f9fa;
 }
 
-.login-container{
+
+/* ============================= */
+/* SIDEBAR */
+/* ============================= */
+
+.sidebar{
+position:fixed;
+left:0;
+top:0;
+width:220px;
+height:100%;
+background:#1E3A8A;
+color:white;
+display:flex;
+flex-direction:column;
+padding-top:20px;
+}
+
+
+.sidebar h2{
+text-align:center;
+margin-bottom:30px;
+font-weight:700;
+font-size:20px;
+}
+
+.sidebar a{
+color:white;
+text-decoration:none;
+padding:15px 20px;
+display:block;
+transition:0.3s;
+font-weight:500;
+}
+
+.sidebar a:hover,
+.sidebar a.active{
+background:#2563EB;
+}
+
+.bg-logo{
+position:fixed;
+top:50%;
+right:-200px;
+transform:translateY(-50%);
+width:1100px;
+height:1100px;
+background:url("logo.jpeg") no-repeat center;
+background-size:contain;
+opacity:0.12;
+filter:blur(6px);
+z-index:-1;
+}
+/* ============================= */
+/* MAIN CONTENT */
+/* ============================= */
+
+.main{
+margin-left:220px;
+padding:30px;
+}
+
+.header{
+font-size:24px;
+font-weight:700;
+color:#0d3a91;
+margin-bottom:20px;
+}
+
+
+/* ============================= */
+/* CARDS */
+/* ============================= */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+margin-bottom:30px;
+}
+
+.card{
+background:white;
+border-radius:12px;
+padding:20px;
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
+text-align:center;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card h3{
+font-size:16px;
+color:#6B7280;
+margin-bottom:10px;
+}
+
+.card p{
+font-size:28px;
+font-weight:700;
+color:#0d6efd;
+}
+
+.department{
+font-weight:600;
+margin-top:10px;
+color:#1E3A8A;
+}
+
+
+/* ============================= */
+/* FORM */
+/* ============================= */
+
+.formBox{
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
+max-width:500px;
+margin:auto;
+}
+
+.formBox label{
+display:block;
+font-weight:500;
+margin-bottom:5px;
+color:#1E3A8A;
+}
+
+.formBox input{
 width:100%;
+padding:12px;
+margin-bottom:15px;
+border-radius:8px;
+border:1px solid #cbd5e1;
+font-size:16px;
+transition:0.3s;
+}
+
+.formBox input:focus{
+border-color:#2563EB;
+box-shadow:0 0 8px rgba(37,99,235,0.3);
+outline:none;
+}
+
+.formBox button{
+width:100%;
+padding:14px;
+background:#0d6efd;
+color:white;
+border:none;
+border-radius:8px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.formBox button:hover{
+transform:scale(1.03);
+box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+/* ============================= */
+/* LOGIN PAGE */
+/* ============================= */
+
+.login-container{
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
 }
 
 .login-box{
-width:350px;
 background:white;
-padding:35px;
-border-radius:10px;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
+padding:40px;
+border-radius:12px;
+box-shadow:0 4px 20px rgba(0,0,0,0.15);
+width:350px;
 text-align:center;
 }
 
 .login-box h2{
-color:#1e3a8a;
-margin-bottom:5px;
+margin-bottom:20px;
+color:#1E3A8A;
 }
 
-.subtitle{
-font-size:14px;
-color:#6b7280;
-margin-bottom:25px;
-}
-
-.input-group{
-margin-bottom:18px;
-text-align:left;
-}
-
-.input-group label{
-font-size:14px;
-color:#374151;
-margin-bottom:5px;
-display:block;
-}
-
-.input-group input,
-.input-group select{
-width:100%;
-padding:11px;
-border-radius:6px;
-border:1px solid #d1d5db;
-font-size:14px;
-outline:none;
-}
-
-.input-group input:focus,
-.input-group select:focus{
-border-color:#2563eb;
-}
-
-button{
+.login-box input{
 width:100%;
 padding:12px;
+margin:10px 0;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+.login-box button{
+width:100%;
+padding:12px;
+background:#2563EB;
 border:none;
-background:#2563eb;
 color:white;
+border-radius:8px;
+font-weight:600;
+cursor:pointer;
+}
+
+
+/* ============================= */
+/* BACKGROUND LOGO */
+/* ============================= */
+
+.bg-logo{
+position:fixed;
+top:50%;
+left:60%;
+transform:translate(-50%,-50%);
+width:900px;
+height:900px;
+background:url("logo.jpeg") no-repeat center;
+background-size:contain;
+opacity:0.08;
+filter:blur(5px);
+z-index:-1;
+}
+
+
+/* ============================= */
+/* TOAST MESSAGE */
+/* ============================= */
+
+.toast{
+position:fixed;
+top:20px;
+right:20px;
+background:#0d6efd;
+color:white;
+padding:12px 20px;
+border-radius:8px;
+display:none;
+font-weight:600;
+z-index:1000;
+}
+
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media(max-width:768px){
+
+.sidebar{
+width:60px;
+}
+
+.sidebar h2{
+display:none;
+}
+
+.sidebar a{
+padding:12px;
+font-size:14px;
+}
+
+.main{
+margin-left:60px;
+padding:20px;
+}
+
+.cards{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:500px){
+
+.cards{
+grid-template-columns:1fr;
+}
+
+.formBox{
+width:90%;
+padding:20px;
+}
+
+}
+/* Staff page */
+
+.container{
+width:80%;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+h1{
+text-align:center;
+margin-top:20px;
+color:#1E3A8A;
+}
+
+form{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+flex-wrap:wrap;
+}
+
+form input{
+padding:10px;
+border:1px solid #ccc;
 border-radius:6px;
-font-weight:500;
+}
+
+form button{
+padding:10px 15px;
+background:#2563EB;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+table th, table td{
+border:1px solid #ddd;
+padding:10px;
+text-align:center;
+}
+
+table th{
+background:#1E3A8A;
+color:white;
+}
+/* ============================= */
+/* PATIENT PAGE */
+/* ============================= */
+
+.patient-container{
+width:80%;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
+margin-top:30px;
+}
+
+body h2{
+text-align:center;
+color:#1E3A8A;
+margin-bottom:20px;
+}
+
+body h3{
+color:#1E3A8A;
+margin-top:30px;
+margin-bottom:10px;
+}
+
+/* Patient Form */
+
+#patientForm{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:25px;
+justify-content:center;
+}
+
+#patientForm input{
+padding:12px;
+border-radius:8px;
+border:1px solid #cbd5e1;
+font-size:15px;
+min-width:180px;
+}
+
+#patientForm button{
+padding:12px 18px;
+background:#0d6efd;
+color:white;
+border:none;
+border-radius:8px;
+font-weight:600;
 cursor:pointer;
 transition:0.3s;
 }
 
-button:hover{
-background:#1e40af;
+#patientForm button:hover{
+transform:scale(1.03);
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
 }
 
-.error{
-color:red;
-font-size:13px;
-margin-bottom:10px;
-display:none;
+/* Table */
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
 }
 
-.footer{
-font-size:13px;
-margin-top:15px;
-color:#6b7280;
+table th{
+background:#1E3A8A;
+color:white;
+padding:12px;
+text-align:center;
 }
 
-.footer a{
-color:#2563eb;
-text-decoration:none;
+table td{
+padding:12px;
+border-bottom:1px solid #e5e7eb;
+text-align:center;
+}
+
+table tr:hover{
+background:#f1f5f9;
 }

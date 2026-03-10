@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Patient Management</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="patient-container">
+<h2>Patient & Bed Allocation</h2>
+
+<form id="patientForm">
+<input type="text" id="pname" placeholder="Patient Name" required>
+<input type="number" id="age" placeholder="Age" required>
+<input type="text" id="bed" placeholder="Bed Number" required>
+<input type="text" id="doctor" placeholder="Doctor Assigned" required>
+<button type="submit">Add Patient</button>
+</form>
+
+<h3>Patient List</h3>
+<table>
+<thead><tr><th>Name</th><th>Age</th><th>Bed</th><th>Doctor</th></tr></thead>
+<tbody id="patientTable"></tbody>
+</table>
+</div>
+
+<script type="module">
+import { loadPatients, addPatient } from "./script.js";
+loadPatients();
+document.getElementById("patientForm").addEventListener("submit", addPatient);
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Staff Management</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+<h1>Staff Management</h1>
+
+<form id="staffForm">
+<input type="text" id="name" placeholder="Staff Name" required>
+<input type="text" id="role" placeholder="Role (Doctor/Nurse)" required>
+<input type="text" id="department" placeholder="Department" required>
+<button type="submit">Add Staff</button>
+</form>
+
+<table>
+<thead><tr><th>Name</th><th>Role</th><th>Department</th></tr></thead>
+<tbody id="staffTable"></tbody>
+</table>
+</div>
+
+<script type="module">
+import { loadStaff, addStaff } from "./script.js";
+loadStaff();
+document.getElementById("staffForm").addEventListener("submit", addStaff);
+</script>
+</body>
+</html>
